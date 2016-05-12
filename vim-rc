@@ -1,0 +1,37 @@
+syntax enable
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
+
+call vundle#end()
+filetype plugin indent on
+
+set incsearch
+set hlsearch
+
+set number
+set relativenumber
+set cursorline
+set cursorcolumn
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set smartindent
+set autoindent
+
+set laststatus=2
+set t_Co=256
+
+colorscheme gruvbox
+set background=dark

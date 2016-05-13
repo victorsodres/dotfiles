@@ -37,7 +37,7 @@ ethernet enp9s0 {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "   %percentage %remaining"
 	path = "/sys/class/power_supply/BAT1/uevent"
 }
 
@@ -50,7 +50,7 @@ run_watch VPN {
 }
 
 tztime local {
-        format = " %d %b %Y  %H:%M:%S"
+        format = " %d %b %Y |  %H:%M:%S"
 }
 
 load {
@@ -58,20 +58,20 @@ load {
 }
 
 cpu_usage {
-	format = "CPU: %usage"
+	format = "  %usage"
 }
 
 disk "/" {
-        format = "/: %avail"
+        format = " /: %avail"
 }
 
 
 disk "/home/" {
-        format = "/home: %avail"
+        format = " /home: %avail"
 }
 
 volume master {
-        format = "♪: %volume"
+        format = "  %volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0

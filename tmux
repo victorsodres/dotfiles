@@ -1,5 +1,5 @@
 # set Zsh as your default Tmux shell
-set-option -g default-shell /usr/bin/zsh
+set-option -g default-shell /bin/zsh
 
 # UTF is great, let us use that
 set -g utf8

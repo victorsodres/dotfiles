@@ -1,31 +1,16 @@
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Setting colors
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
 
-#font pango:DejaVu Sans Mono 8
-font pango:System San Francisco Display 10
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango:System San Francisco Display 11
 
 hide_edge_borders both
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -33,20 +18,16 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec terminator #i3-sensible-terminal
 
-# lock terminal
+# lock screen
 bindsym $mod+t exec slock
 #bindsym $mod+t exec i3lock --color 475263
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# Start Program launcher
 #bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 60 -padding 50 -opacity "50" -bw 0 -font "System San Francisco Display 14"
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -175,12 +156,6 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
 # window colors
 #                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
@@ -190,9 +165,9 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # # bar
 bar {
-  status_command i3status
+  #status_command i3status
+  status_command i3blocks
   position top
-  #height 25
   colors {
     background $bg-color
       separator #757575
@@ -203,25 +178,11 @@ bar {
   }
 }
 
-#bar {
-#  status_command i3status
-#  #status_command i3blocks -c /home/victorsodre/.i3/i3blocks
-#	position top
-#  colors {
-#    background #000000
-#    #statusline #00A5FF #that neon blue
-#    separator #666666
-#    focused_workspace  #4c7899 #285577 #ffffff
-#    active_workspace   #333333 #5f676a #ffffff
-#    inactive_workspace #333333 #222222 #888888
-#    urgent_workspace   #2f343a #900000 #ffffff
-#  }
-#}
-
-
 # Execs
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
+exec --no-startup-id redshift-gtk
+exec --no-startup-id indicator-brightness
 exec --no-startup-id terminator
 exec --no-startup-id compton
 
@@ -230,15 +191,11 @@ bindsym $mod+Shift+e exec 'nautilus'
 
 # background
 exec_always --no-startup-id feh --bg-fill ~/Imagens/wallpaper/pink-floyd.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/placeholder.jpg
 #exec --no-startup-id xsetroot -solid "#333333"
 
 # Printscreen
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
-
-# Section to control the Master output
-#bindsym Shift+Ctrl+Home exec --no-startup-id "amixer -q set Master 5dB+"
-#bindSym Shift+Ctrl+End  exec --no-startup-id "amixer -q set Master 5dB-"
-#bindSym Ctrl+Shift+Delete exec "amixer -D pulse set Master 1+ toggle"
 
 # Workspace prev
 bindsym $mod+Ctrl+Left workspace Prev
@@ -253,7 +210,15 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5%
 bindsym XF86AudioMute exec ~/bin/toggle-mute
 bindsym XF86AudioNext exec clementine --next
 #
+# Control Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Enable/disable loggin
 bindsym $mod+x shmlog toggle
 
+# Numlock and Capslock Indicator
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks

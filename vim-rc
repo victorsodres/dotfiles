@@ -11,6 +11,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 filetype plugin indent on
@@ -37,3 +38,9 @@ colorscheme gruvbox
 set background=dark
 
 set clipboard=unnamed
+
+" Map NerdTree to Ctrl+a
+map <C-a> :NERDTreeToggle<CR>
+
+" CtrlP configuration 
+"set runtimepath^=~/.vim/bundle/ctrlp.vim

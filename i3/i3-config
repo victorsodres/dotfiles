@@ -19,7 +19,7 @@ floating_modifier $mod
 bindsym $mod+Return exec terminator #i3-sensible-terminal
 
 # lock screen
-bindsym $mod+t exec slock -i /home/victorsodre/Imagens/slock/image
+bindsym $mod+t exec slock -i /home/victorsodre/Imagens/slock/image standby-screen
 #bindsym $mod+t exec i3lock --color 475263
 
 # kill focused window
@@ -98,8 +98,8 @@ set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
 set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
+set $workspace8 "8  "
+set $workspace9 "9  "
 set $workspace10 "10 "
 
 
@@ -134,8 +134,11 @@ assign [class="Atom"] $workspace3
 assign [class="Thunderbird"] $workspace9
 assign [class="Spotify"] $workspace10
 assign [class="crx_knipolnnllmklapflnccelgolnpehhpl"] $workspace9
+assign [class="Franz"] $workspace9
 
-for_window [class="google-chrome" instance="crx_knipolnnllmklapflnccelgolnpehhpl"] floating disable
+# Force program open floating
+for_window [class="google-chrome" instance="crx_jjphmlaoffndcnecccgemfdaaoighkel"] floating enable # Youtube Floater extension
+for_window [class="google-chrome" instance="crx_knipolnnllmklapflnccelgolnpehhpl"] floating disable # Hangouts extension
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -179,7 +182,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # # bar
 bar {
   #status_command i3status
-  status_command i3blocks -c ~/.i3blocks
+  status_command i3blocks -c ~/.i3/i3blocks
   position top
   colors {
     background $bg-color
@@ -199,8 +202,9 @@ exec --no-startup-id indicator-brightness
 exec --no-startup-id terminator
 exec --no-startup-id compton
 
-bindsym $mod+Shift+v exec 'nm-applet pa-applet'
+bindsym $mod+Shift+v exec 'nm-applet pa-applet blueberry-tray'
 bindsym $mod+Shift+e exec 'nautilus'
+bindsym $mod+Shift+z exec 'toggleTouchpad'
 
 # background
 exec_always --no-startup-id feh --bg-fill ~/Imagens/wallpaper/pink-floyd.jpg
@@ -208,7 +212,7 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/placeholder.jpg
 #exec --no-startup-id xsetroot -solid "#333333"
 
 # Printscreen
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Imagens/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 
 # Workspace prev
 bindsym $mod+Ctrl+Left workspace Prev
@@ -219,7 +223,7 @@ bindsym $mod+Ctrl+Right workspace Next
 bindsym $mod+Ctrl+l workspace Next
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec ~/bin/toggle-mute
 bindsym XF86AudioNext exec clementine --next
 #

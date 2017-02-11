@@ -78,11 +78,17 @@ interval=30
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-#instance=wlan0
+instance=wlp3s0
 color=#00FF00
-interval=10
+interval=1
 label=
 #separator=false
+
+[iface]
+instance=enp4s0f2
+color=#00FF00
+interval=1
+label=E
 
 [wifi]
 #instance=wlp3s0
@@ -158,3 +164,13 @@ instance=Master
 interval=1
 signal=10
 
+#[pomodoro]
+#command=~/dotfiles/i3-pomodoro/block.sh
+#signal=2
+#interval=once
+
+#[pistola]
+#full_text=Pistolero
+#command=echo button=$BLOCK_BUTTON x=$BLOCK_X y=$BLOCK_Y
+#interval=once
+#label=Jumba

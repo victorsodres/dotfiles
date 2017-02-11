@@ -19,7 +19,7 @@ floating_modifier $mod
 bindsym $mod+Return exec terminator #i3-sensible-terminal
 
 # lock screen
-bindsym $mod+t exec slock
+bindsym $mod+t exec slock -i /home/victorsodre/Imagens/slock/image
 #bindsym $mod+t exec i3lock --color 475263
 
 # kill focused window
@@ -80,16 +80,27 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Workspace Variables
-set $workspace1 "1  Terminals"
-set $workspace2 "2   Code"
-set $workspace3 "3   Code"
-set $workspace4 "4  Random"
-set $workspace5 "5  Random"
-set $workspace6 "6  Random"
-set $workspace7 "7  Clientes"
-set $workspace8 "8   Chrome"
-set $workspace9 "9  Chats/Emails"
-set $workspace10 "10  Music"
+#set $workspace1 "1  Terminals"
+#set $workspace2 "2   Code"
+#set $workspace3 "3   Code"
+#set $workspace4 "4  Random"
+#set $workspace5 "5  Random"
+#set $workspace6 "6  Random"
+#set $workspace7 "7  Clientes"
+#set $workspace8 "8   Chrome"
+#set $workspace9 "9  Chats/Emails"
+#set $workspace10 "10  Music"
+
+set $workspace1 "1 "
+set $workspace2 "2  "
+set $workspace3 "3  "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
 
 
 # switch to workspace
@@ -123,6 +134,8 @@ assign [class="Atom"] $workspace3
 assign [class="Thunderbird"] $workspace9
 assign [class="Spotify"] $workspace10
 assign [class="crx_knipolnnllmklapflnccelgolnpehhpl"] $workspace9
+
+for_window [class="google-chrome" instance="crx_knipolnnllmklapflnccelgolnpehhpl"] floating disable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -195,7 +208,7 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/placeholder.jpg
 #exec --no-startup-id xsetroot -solid "#333333"
 
 # Printscreen
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Imagens/screenshots/'
 
 # Workspace prev
 bindsym $mod+Ctrl+Left workspace Prev

@@ -88,7 +88,13 @@ label=
 instance=enp4s0f2
 color=#00FF00
 interval=1
-label=E
+label=
+
+[iface]
+instance=enp9s0
+color=#00FF00
+interval=1
+label=
 
 [wifi]
 #instance=wlp3s0

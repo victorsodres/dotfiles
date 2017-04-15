@@ -27,7 +27,8 @@ bindsym $mod+Shift+q kill
 
 # Start Program launcher
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 60 -padding 50 -opacity "50" -bw 0 -font "System San Francisco Display 14"
+#bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec ~/dotfiles/scripts/rofi-custom
 
 # change focus
 bindsym $mod+h focus left
@@ -210,8 +211,9 @@ bindsym $mod+Shift+e exec 'nautilus'
 bindsym $mod+Shift+z exec 'toggleTouchpad'
 
 # background
-exec_always --no-startup-id feh --bg-fill ~/Imagens/wallpaper/pink-floyd.jpg
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper/placeholder.jpg
+exec ~/dotfiles/scripts/update-background
+#exec_always --no-startup-id feh --bg-fill ~/Imagens/wallpaper/pink-floyd.jpg
+#exec_always --no-startup-id feh --bg-fill ~/dotfiles/wallpaper/placeholder.jpg
 #exec --no-startup-id xsetroot -solid "#333333"
 
 # Printscreen

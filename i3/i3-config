@@ -137,6 +137,7 @@ assign [class="crx_knipolnnllmklapflnccelgolnpehhpl"] $workspace9
 assign [class="Franz"] $workspace9
 
 # Force program open floating
+for_window [class="google-chrome" instance="crx_anoelogknphkblfagnpdmpfpaddikbae"] floating enable # Picture in Picture extension
 for_window [class="google-chrome" instance="crx_jjphmlaoffndcnecccgemfdaaoighkel"] floating enable # Youtube Floater extension
 for_window [class="google-chrome" instance="crx_knipolnnllmklapflnccelgolnpehhpl"] floating disable # Hangouts extension
 
@@ -195,6 +196,7 @@ bar {
 }
 
 # Execs
+exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
 exec --no-startup-id redshift-gtk

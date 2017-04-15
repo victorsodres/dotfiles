@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -e "---WORK IN PROGRESS---\n\n"
+
+echo -e "Copiando scripts para o ~/bin\n"
+cp ./scripts/standby-screen ~/bin
+cp ./scripts/toggleTouchpad ~/bin
+
+echo -e "Atualizando i3 configurations\n"
+ln -s ~/dotfiles/i3/i3-config ~/.i3/config
+ln -s ~/dotfiles/i3/i3-blocks ~/.i3/i3blocks

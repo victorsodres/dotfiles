@@ -7,5 +7,7 @@ cp ./scripts/standby-screen ~/bin
 cp ./scripts/toggleTouchpad ~/bin
 
 echo -e "Atualizando i3 configurations\n"
-ln -s ~/dotfiles/i3/i3-config ~/.i3/config
-ln -s ~/dotfiles/i3/i3-blocks ~/.i3/i3blocks
+echo -e "i3config to ./i3/config\n"
+ln -fs ~/dotfiles/i3/config ~/.i3/config
+echo -e "i3blocks to ./i3/i3blocks\n"
+ln -fs ~/dotfiles/i3/blocks ~/.i3/i3blocks

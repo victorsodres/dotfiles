@@ -23,6 +23,7 @@ set number
 set relativenumber
 set cursorline
 set cursorcolumn
+set nowrap
 
 set expandtab
 set tabstop=2

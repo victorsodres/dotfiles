@@ -1,0 +1,59 @@
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'itchyny/lightline.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
+
+colorscheme gruvbox
+set background=dark
+
+" Identifica o tipo de arquivo e identa
+filetype plugin indent on
+
+" Colorir o editor
+syntax enable
+
+" Set the type for the file type and override if file type
+" already has detected
+au BufRead,BufNewFile *.html.hbs set filetype=html
+
+
+set incsearch " Busca incremental - feedback enquanto busco
+set hlsearch " Highlight termo buscado
+
+set number " Numerar as linhas
+set relativenumber " Numerar as linhas relativas 
+
+set cursorline
+set cursorcolumn
+set nowrap
+
+set expandtab " Usar espaços no lugar de TAB
+set softtabstop=2 " Backspace respeitar identação
+
+set tabstop=2 " Tamanho da identação
+set shiftwidth=2 " Deixar coerente a identação com o tamanho de TAB
+set backspace=2 " Comportamento usual do backsapce
+
+set smartindent
+set autoindent
+
+set laststatus=2
+set t_Co=256
+
+set clipboard=unnamed
+
+" Map NerdTree to Ctrl+a
+map <C-a> :NERDTreeToggle<CR>
+
+" CtrlP configuration 
+"set runtimepath^=~/.vim/bundle/ctrlp.vim

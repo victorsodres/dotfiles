@@ -21,7 +21,7 @@ floating_modifier $mod
 bindsym --whole-window $mod+button2 kill
 
 # The right button toggles floating
-bindsym $mod+button3 floating toggle
+bindsym button2 floating toggle
 
 # The side buttons move the window around
 #bindsym button9 move left
@@ -33,7 +33,8 @@ bindsym $mod+button3 floating toggle
 bindsym $mod+Return exec terminator #i3-sensible-terminal
 
 # lock screen
-bindsym $mod+t exec slock -i /home/victorsodre/Imagens/slock/image # standby-screen
+bindsym $mod+t exec ./dotfiles/scripts/standby-screen
+#bindsym $mod+t exec islock -i /home/victorsodre/Imagens/slock/image # standby-screen
 #bindsym $mod+t exec i3lock --color 475263
 
 # kill focused window
@@ -226,12 +227,10 @@ bindsym $mod+Shift+z exec 'toggleTouchpad'
 
 # background
 exec ~/dotfiles/scripts/update-background ~/Imagens/wallpaper/dist
-#exec_always --no-startup-id feh --bg-fill ~/Imagens/wallpaper/pink-floyd.jpg
-#exec_always --no-startup-id feh --bg-fill ~/dotfiles/wallpaper/placeholder.jpg
 #exec --no-startup-id xsetroot -solid "#333333"
 
 # Printscreen
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
+bindsym --release Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/' -s
 
 # Workspace prev
 bindsym $mod+Ctrl+Left workspace Prev

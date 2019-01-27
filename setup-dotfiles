@@ -1,13 +1,21 @@
 #!/bin/bash
 
-echo -e "---WORK IN PROGRESS---\n\n"
+DOTFILES_DIR=~/dotfiles
+HOME_DIR=/home/victorsodre
 
-echo -e "Copiando scripts para o ~/bin\n"
-cp ./scripts/standby-screen ~/bin
-cp ./scripts/toggleTouchpad ~/bin
+echo -e "## Configurando Dotfiles..."
 
-echo -e "Atualizando i3 configurations\n"
-echo -e "i3config to ./i3/config\n"
-ln -fs ~/dotfiles/i3/config ~/.i3/config
-echo -e "i3blocks to ./i3/i3blocks\n"
-ln -fs ~/dotfiles/i3/blocks ~/.i3/i3blocks
+echo -e "\n* Linkando arquivos de configuração..."
+sudo ln -fs /usr/local/bin $HOME_DIR/bin
+ln -fs $DOTFILES_DIR/config-files/vim-rc $HOME_DIR/.vimrc
+ln -fs $DOTFILES_DIR/config-files/terminator-config $HOME_DIR/.config/terminator/config
+
+echo -e "\n* Copiando scripts para o ~/bin..."
+sudo cp ./scripts/standby-screen $HOME_DIR/bin
+sudo cp ./scripts/toggle-touchpad $HOME_DIR/bin
+
+echo -e "\n* Atualizando i3 configurations..."
+ln -fs $DOTFILES_DIR/i3/config $HOME_DIR/.i3/config
+ln -fs $DOTFILES_DIR/i3/blocks $HOME_DIR/.i3/i3blocks
+
+echo -e "\n## Procedimento finalizado"

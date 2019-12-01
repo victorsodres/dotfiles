@@ -312,8 +312,8 @@ bindsym $mod+Shift+e exec 'nautilus'
 bindsym $mod+Shift+z exec 'toggleTouchpad'
 
 # background
-exec ~/dotfiles/scripts/update-background ~/Imagens/wallpaper/dist
-#exec --no-startup-id xsetroot -solid "#333333"
+exec ~/development/dotfiles/scripts/update-background ~/Imagens/wallpapers
+bindsym $mod+Ctrl+r exec ~/development/dotfiles/scripts/update-background ~/Imagens/wallpapers
 
 # Printscreen
 bindsym --release Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/' -s

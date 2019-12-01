@@ -5,9 +5,12 @@ DOTFILES_DIR=~/development/dotfiles
 
 echo -e "## Configurando Dotfiles..."
 
+mkdir -p ~/.screenlayout
+
 echo -e "\n* Linkando arquivos de configuração..."
 ln -fs $DOTFILES_DIR/config-files/vim-rc $HOME_DIR/.vimrc
 ln -fs $DOTFILES_DIR/config-files/terminator-config $HOME_DIR/.config/terminator/config
+ln -fs $DOTFILES_DIR/scripts/arandr-default-layout-screen.sh $HOME_DIR/.screenlayout
 
 echo -e "\n* Copiando scripts para o ~/bin..."
 sudo cp ./scripts/standby-screen $HOME_DIR/bin
@@ -26,7 +29,7 @@ ln -fs $DOTFILES_DIR/zshell/zshrcpre-oh-my-zsh $HOME_DIR/.zshrcpre-oh-my-zsh
 ln -fs $DOTFILES_DIR/zshell/zsh-update $HOME_DIR/.zsh-update
 
 echo -e "Baixando programas..."
-sudo pacman --noconfirm -S yay vim git docker openvpn openssh arandr rofi npm
+sudo pacman --noconfirm -S yay vim git docker openvpn openssh arandr autorandr rofi npm feh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo yay -S nvm

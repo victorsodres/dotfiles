@@ -1,12 +1,11 @@
 #!/bin/bash
 
-DOTFILES_DIR=~/dotfiles
 HOME_DIR=/home/victorsodre
+DOTFILES_DIR=~/development/dotfiles
 
 echo -e "## Configurando Dotfiles..."
 
 echo -e "\n* Linkando arquivos de configuração..."
-sudo ln -fs /usr/local/bin $HOME_DIR/bin
 ln -fs $DOTFILES_DIR/config-files/vim-rc $HOME_DIR/.vimrc
 ln -fs $DOTFILES_DIR/config-files/terminator-config $HOME_DIR/.config/terminator/config
 
@@ -17,5 +16,21 @@ sudo cp ./scripts/toggle-touchpad $HOME_DIR/bin
 echo -e "\n* Atualizando i3 configurations..."
 ln -fs $DOTFILES_DIR/i3/config $HOME_DIR/.i3/config
 ln -fs $DOTFILES_DIR/i3/blocks $HOME_DIR/.i3/i3blocks
+
+echo -e "Execute o seguinte dentro do VIM para instalar os plugins \n:source % \n:PlugInstall"
+
+echo -e "Baixando zshell e linkando configuração..."
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ln -fs $DOTFILES_DIR/zshell/zshrc $HOME_DIR/.zshrc
+ln -fs $DOTFILES_DIR/zshell/zshrcpre-oh-my-zsh $HOME_DIR/.zshrcpre-oh-my-zsh
+ln -fs $DOTFILES_DIR/zshell/zsh-update $HOME_DIR/.zsh-update
+
+echo -e "Baixando programas..."
+sudo pacman --noconfirm -S yay vim git docker openvpn openssh arandr rofi npm
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo yay -S nvm
+zsh --login
+nvm install 8; nvm install 6;
 
 echo -e "\n## Procedimento finalizado"

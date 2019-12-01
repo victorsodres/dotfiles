@@ -21,15 +21,15 @@ then
     esac
 
     if [ "$capacity" -ge 90 ]; then
-      echo "  $capacity% $symbol"
+      echo "  $capacity% $symbol"
     elif [ "$capacity" -ge 75 ]; then
-      echo "  $capacity% $symbol"
+      echo "  $capacity% $symbol"
     elif [ "$capacity" -ge 40 ]; then
-      echo "  $capacity% $symbol"
+      echo "  $capacity% $symbol"
     elif [ "$capacity" -ge 10 ]; then
-      echo "  $capacity% $symbol"
+      echo "  $capacity% $symbol"
     else
-      echo "  $capacity% $symbol"
+      echo "  $capacity% $symbol"
     fi
 
     #echo "  $capacity% $symbol"

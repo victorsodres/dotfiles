@@ -1,0 +1,103 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/home/victorsodre/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="zhann"
+ZSH_THEME="af-magic"
+
+# Open new tab in current directory
+[[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd/mm/yyyy"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# User configuration
+
+export PATH="/home/victorsodre/.rvm/gems/ruby-2.2.0/bin:/home/victorsodre/.rvm/gems/ruby-2.2.0@global/bin:/home/victorsodre/.rvm/rubies/ruby-2.2.0/bin:/usr/local/lib/jvm/default/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/lib/jvm/default/bin:/home/victorsodre/bin:/home/victorsodre/development/eclipse:/home/victorsodre/development/squirrelsql:/home/victorsodre/development/mongodb/bin:/home/victorsodre/bin:/home/victorsodre/.rvm/bin:$PATH"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+#Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}" 
+  #echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+#setopt PROMPT_SUBST
+#PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+ECLIPSE_HOME=$HOME/development/ides/eclipse
+USER_BIN=/usr/local/bin
+#JAVA_HOME=/usr/local/lib/jvm/default
+MONGODB_HOME=$HOME/development/mongodb
+SQUIRREL_SQL_HOME=$HOME/development/squirrelsql
+RVM=$HOME/.rvm
+GEM_PATH=$HOME/.gem
+GEM_HOME=$HOME/.gem
+METEOR_HOME=$HOME/.meteor
+export PATH=$PATH:$ECLIPSE_HOME:$SQUIRREL_SQL_HOME:$MONGODB_HOME/bin:$HOME/bin:$RVM/bin:$GEM_PATH:$GEM_HOME:$METEOR_HOME
+
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#if [ -s "$HOME/.nvm/nvm.sh" ]; then
+#  export NVM_DIR="$HOME/.nvm"
+#  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+#  alias nvm='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && nvm'
+#  alias node='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && node'
+#  alias npm='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && npm'
+#fi
+
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .bashrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -f __init_nvm)" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
+
+#export SDKMAN_DIR="/home/victorsodre/.sdkman"
+#[[ -s "/home/victorsodre/.sdkman/bin/sdkman-init.sh" ]] && source "/home/victorsodre/.sdkman/bin/sdkman-init.sh"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

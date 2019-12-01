@@ -1,17 +1,15 @@
 
-set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin()
 
-call vundle#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'itchyny/lightline.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-
-call vundle#end()
+call plug#end()
 
 colorscheme gruvbox
 set background=dark

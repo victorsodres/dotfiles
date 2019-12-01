@@ -1,7 +1,7 @@
+i3
 vim
 git
 google-chrome
-i3
 zsh
 rofi
 scrot
@@ -9,14 +9,15 @@ feh
 arandr
 autorandr
 lxappearance
-slock
+# slock
 pa-applet-git
 blueberry
 docker
 openvpn
+openssh
 
 # node npm
 # pip
 
 # Arch linux
-yaourt
+yay

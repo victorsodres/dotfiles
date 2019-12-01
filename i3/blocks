@@ -34,151 +34,67 @@ markup=none
 #
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-[keyindicator]
-instance=CAPS
-interval=once
-signal=11
-
-[keyindicator]
-instance=NUM
-interval=once
-signal=11
-
-
-# Memory usage
 #
-# The type defaults to "mem" if the instance is not specified.
-[memory]
-label=MEM
-separator=false
-interval=10
+[caps-lock]
+interval=once
+command=xset -q | grep Caps | awk '{ print $4 != "off" ? "CAPS" : "" }' 
+signal=11
+
+[num-lock]
+interval=once
+command=xset -q | grep Num | awk '{ print $8 != "off" ? "NUM" : "" }' 
+signal=11
 
 [memory]
-label=SWAP
+label=MEM 
+interval=10
+command=free -h | grep Mem. | awk '{ print $7 }'
+
+[memory]
+label=SWAP 
 instance=swap
-#separator=false
+command=free -h | grep Swap | awk '{ print $4 }'
 interval=10
 
-# Disk usage
-#
-# The directory defaults to $HOME if the instance is not specified.
-# The script may be called with a optional argument to set the alert
-# (defaults to 10 for 10%).
 [disk]
-label= /home/
+label= /home/ 
+command=df -h /home | grep '/dev/' | awk '{print $4}'
 interval=30
 
 [disk]
-label= /
-instance=/
+label= / 
+command=df -h / | grep '/dev/' | awk '{print $4}'
 interval=30
 
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-instance=wlp3s0
-color=#00FF00
-interval=1
-label=
-#separator=false
-
-[iface]
-instance=enp4s0f2
-color=#00FF00
-interval=1
-label=
-
-[iface]
+[ethernet]
 instance=enp9s0
+command=ip a s enp9s0 | grep 'inet ' | awk '{ gsub(/\/.+/, "", $2); print $2 }'
 color=#00FF00
 interval=1
 label=
 
 [wifi]
-#instance=wlp3s0
 interval=10
-
-#[bandwidth]
-##instance=eth0
-#interval=5
-
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-#[cpu_usage]
-#label=CPU
-#interval=10
-#min_width=CPU: 100.00%
-#separator=false
+# label=
+command=ip a s wlp3s0 | grep 'inet ' | awk '{ gsub(/\/.+/, "", $2); print $2 }'
 
 [load_average]
-label=
+label=CPU 
 interval=10
+command=cat /proc/loadavg | awk '{ print $1 }'
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
+[time]
+command=date '+ %d/%m/%Y   %H:%M:%S'
+interval=1
+
 [battery]
-#label=BAT
 label=⚡
 instance=1
 interval=2
-command=/home/victorsodre/dotfiles/i3/scripts/battery
-#command=/home/victorsodre/bin/battery
+command=/home/victorsodre/development/dotfiles/i3/scripts/battery
 
-# Date Time
-#
-[time]
-#command=date '  +%d/%m/%Y  %H:%M:%S'
-command=date '+ %d/%m/%Y    %H:%M:%S'
-interval=1
-
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-#[mediaplayer]
-#instance=spotify
-#interval=5
+#[volume]
+#label=♪
+#command=awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master)
+#interval=1
 #signal=10
-
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=2
-
-# Temperature
-#
-# Support multiple chips, though lm-sensors.
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-#[temperature]
-#label=TEMP
-#interval=10
-
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-label=♪
-instance=Master
-#instance=PCM
-interval=1
-signal=10
-
-#[pomodoro]
-#command=~/dotfiles/i3-pomodoro/block.sh
-#signal=2
-#interval=once
-
-#[pistola]
-#full_text=Pistolero
-#command=echo button=$BLOCK_BUTTON x=$BLOCK_X y=$BLOCK_Y
-#interval=once
-#label=Jumba

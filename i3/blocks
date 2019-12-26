@@ -48,7 +48,7 @@ signal=11
 [memory]
 label=MEM 
 interval=10
-command=free -h | grep Mem. | awk '{ print $7 }'
+command=free -h | grep Mem. | awk '{ print $4 }'
 
 [memory]
 label=SWAP 

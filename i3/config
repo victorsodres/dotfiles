@@ -35,7 +35,7 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+Return exec terminator
 
 # lock screen
-bindsym $mod+t exec --no-startup-id blurlock
+bindsym $mod+t exec --no-startup-id blurlock && xset dpms force standby
 #bindsym $mod+t exec ./dotfiles/scripts/standby-screen
 #bindsym $mod+t exec islock -i /home/victorsodre/Imagens/slock/image # standby-screen
 #bindsym $mod+t exec i3lock --color 475263
@@ -326,8 +326,10 @@ bindsym $mod+Ctrl+h workspace Prev
 bindsym $mod+Ctrl+Right workspace Next
 bindsym $mod+Ctrl+l workspace Next
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec amixer set Master playback 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master playback 5%-
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec ~/bin/toggle-mute
 bindsym XF86AudioNext exec clementine --next
 #

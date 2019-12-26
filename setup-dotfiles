@@ -32,6 +32,8 @@ echo -e "Baixando programas..."
 sudo pacman --noconfirm -S yay vim git docker openvpn openssh arandr autorandr rofi npm feh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
+echo -e "\nConfigurar o autorandr (https://github.com/phillipberndt/autorandr)"
+
 sudo yay -S nvm
 zsh --login
 nvm install 8; nvm install 6;
